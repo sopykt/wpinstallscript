@@ -1,1 +1,1 @@
-#Wordpress install script
+# Wordpress install script
