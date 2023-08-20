@@ -1,0 +1,13 @@
+#!/bin/bash
+
+vhostpath=/etc/apache2/sites-available/soepaing.com.conf
+read -r -d '' vhostcontents << EOM
+<VirtualHost *:80>
+    ServerAdmin webmaster@localhost
+    ServerName soepaing.com
+    ServerAlias www.soepaing.com
+    DocumentRoot /var/www/soepaing.com
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+EOM

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo apt install mysql-server;
+sudo mysql_secure_installation;
+sudo mysql <<EOF
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '014369929sOE';
+FLUSH PRIVILEGES;
+EOF

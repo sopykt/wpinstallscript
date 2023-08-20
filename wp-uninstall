@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source variables;
+cd /var/www/;
+sudo rm -rf $servername;
+cd $SCRIPT_DIR;
+source wpdbmysqluninstall;
+sudo a2dissite $servername.conf;
+sudo a2dissite $servername-le-ssl.conf;
+cd /etc/apache2/sites-available/;
+sudo rm $servername.conf;
+sudo rm $servername-le-ssl.conf;
+sudo service apache2 restart;

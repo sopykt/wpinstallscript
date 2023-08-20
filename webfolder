@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo mkdir /var/www/soepaing.com;
+sudo chown -R $USER:$USER /var/www/soepaing.com;
+sudo chmod -R 755 /var/www/soepaing.com;

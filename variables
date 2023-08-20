@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo "Enter DB Name for WP";
+read dbname;
+echo "Enter DB username";
+read dbusername;
+echo "Enter DB password";
+read dbpw;
+echo "Enter ServerName";
+read servername;
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )";

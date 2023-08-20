@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source mysqldbwp;
+source phpextinstall;
+source wpconf;
+source functions;
+sudocreatefilewithcontents "$wpconfpath" "$wpconfcontents";
+sudo a2enmod rewrite;
+sudo apache2ctl configtest;
+sudo systemctl restart apache2;
+source dlwp;
+
+echo "To grab secure values from the WordPress secret key generator, type:";
+echo "curl -s https://api.wordpress.org/secret-key/1.1/salt/";
+echo "open the WordPress configuration file:";
+echo "sudo nano /var/www/wordpress/wp-config.php";
+echo "paste in the values you copied from the command line:";
+echo "correct following lines";
+echo "define('DB_NAME', 'wordpress');";
+echo "define('DB_USER', 'wordpressuser');";
+echo "define('DB_PASSWORD', '014369929sOE');";
+echo "define('FS_METHOD', 'direct');";

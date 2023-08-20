@@ -1,0 +1,8 @@
+#!/bin/bash
+
+sudo mysql -u root -p <<EOF
+CREATE DATABASE $dbname DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+CREATE USER '$dbusername'@'%' IDENTIFIED WITH mysql_native_password BY '$dbpw';
+GRANT ALL ON $dbname.* TO '$dbusername'@'%';
+FLUSH PRIVILEGES;
+EOF

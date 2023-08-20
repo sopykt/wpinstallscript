@@ -1,0 +1,31 @@
+#!/bin/bash
+
+wpconfigphppath=/var/www/"$servername"/wp-config.php
+read -r -d '' wpconfigphpcontents << EOM
+<?php
+define( 'DB_NAME', '$dbname' );
+
+define( 'DB_USER', '$dbusername' );
+
+define( 'DB_PASSWORD', '$dbpw' );
+
+define( 'DB_HOST', 'localhost' );
+
+define( 'DB_CHARSET', 'utf8' );
+
+define( 'DB_COLLATE', '' );
+
+define('FS_METHOD', 'direct');
+
+$wpkey
+
+\$table_prefix = 'wp_';
+
+define( 'WP_DEBUG', true );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+require_once ABSPATH . 'wp-settings.php';
+EOM

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cd /tmp;
+rm latest.tar.gz;
+rm -rf wordpress;
+curl -O https://wordpress.org/latest.tar.gz;
+tar xzvf latest.tar.gz;
+touch /tmp/wordpress/.htaccess;
+cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php;
+mkdir /tmp/wordpress/wp-content/upgrade;
+sudo cp -a /tmp/wordpress/. /var/www/$servername;
+sudo chown -R www-data:www-data /var/www/$servername;
+sudo find /var/www/$servername/ -type d -exec chmod 750 {} \;
+sudo find /var/www/$servername/ -type f -exec chmod 640 {} \;
+
+cd $SCRIPT_DIR;

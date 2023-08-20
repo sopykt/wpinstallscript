@@ -1,0 +1,13 @@
+#!/bin/bash
+
+indexpath=/var/www/soepaing.com/index.html
+read -r -d '' indexcontents << EOM
+<html>
+    <head>
+        <title>Welcome to soepaing.com!</title>
+    </head>
+    <body>
+        <h1>Success!  The soepaing.com server block is working!</h1>
+    </body>
+</html>
+EOM

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source apacheinstall;
+source mysqlinstall;
+source phpinstall;
+source dirconf;
+source functions;
+sudocreatefilewithcontents "$dirconfpath" "$dirconfcontents";
+sudo systemctl restart apache2;
+# source webfolder;
+# source indexhtml;
+# createfilewithcontents "$indexpath" "$indexcontents";
+# source vhost;
+# sudocreatefilewithcontents "$vhostpath" "$vhostcontents";
+
+# sudo a2ensite soepaing.com.conf;
+# sudo a2dissite 000-default.conf;
+sudo apache2ctl configtest;
+sudo systemctl restart apache2;
