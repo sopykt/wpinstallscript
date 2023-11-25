@@ -1,0 +1,21 @@
+#!/bin/bash
+
+source variables;
+source mysqldbwp;
+source phpextinstall;
+source wpconf;
+source functions;
+sudocreatefilewithcontents "$wpconfpath" "$wpconfcontents";
+sudo a2enmod rewrite;
+sudo apache2ctl configtest;
+sudo systemctl restart apache2;
+source dlwp-local;
+source wpkey;
+source wpconfigphp;
+sudocreatefilewithcontents "$wpconfigphppath" "$wpconfigphpcontents";
+sudo chown -R www-data:www-data /var/www/$servername;
+sudo a2ensite $servername.conf;
+sudo systemctl reload apache2;
+# source letsencryptinstall;
+# sudo certbot --apache --expand -d mmohs.com -d $servername;
+# sudo certbot --apache -d $servername;

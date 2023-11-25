@@ -1,0 +1,20 @@
+#!/bin/bash
+
+cd /tmp;
+rm latest.tar.gz;
+rm -rf wordpress;
+curl -O https://wordpress.org/latest.tar.gz;
+tar xzvf latest.tar.gz;
+touch /tmp/wordpress/.htaccess;
+cp /tmp/wordpress/wp-config-sample.php /tmp/wordpress/wp-config.php;
+mkdir /tmp/wordpress/wp-content/upgrade;
+sudo cp -a /tmp/wordpress/. /var/www/$servername;
+sudo chown -R www-data:www-data /var/www/$servername;
+# Get the current user
+current_user=$(whoami)
+# Add the current user to the www-data group
+sudo usermod -aG www-data $current_user
+sudo find /var/www/$servername/ -type d -exec chmod 770 {} \;
+sudo find /var/www/$servername/ -type f -exec chmod 660 {} \;
+
+cd $SCRIPT_DIR;
